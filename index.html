@@ -12,7 +12,7 @@
             box-sizing: border-box;
         }
 
-        /* Make the iframe responsive while preserving the aspect ratio */
+        /* Make the plot responsive while preserving the aspect ratio */
         html, body {
             width: 100%;
             height: 100%;
@@ -21,15 +21,9 @@
             font-family: Arial, sans-serif;
         }
 
-        .iframe-container {
+        #plot-container {
             width: 100%;
             height: 100vh; /* Use the full viewport height */
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
         }
 
         h1 {
@@ -38,15 +32,24 @@
             margin-top: 20px;
         }
     </style>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <div class="iframe-container">
-        <iframe 
-            src="BoxPlot-StartTime-12-18-2022-0800EndTime-12-28-2022-0800.html" 
-            allowfullscreen>
-        </iframe>
-    </div>
+    <div id="plot-container"></div>
+    <script>
+        // Fetch and embed the Plotly HTML from GitHub Pages
+        const plotlyURL = "https://jwoodall01/AMS2025Visuals.github.io/BoxPlot-StartTime-12-18-2022-0800EndTime-12-28-2022-0800.html";
+
+        fetch(plotlyURL)
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const plotlyContent = doc.body.innerHTML;
+                document.getElementById('plot-container').innerHTML = plotlyContent;
+            })
+            .catch(error => console.error('Error loading Plotly HTML:', error));
+    </script>
 </body>
 </html>
-
 
