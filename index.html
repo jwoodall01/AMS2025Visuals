@@ -39,8 +39,6 @@
             width: 100%;
             height: 100%;
             border: none;
-            transform: scale(0.8); /* Adjust zoom */
-            transform-origin: top left; /* Anchor the zoom */
         }
 
         h1 {
@@ -57,5 +55,18 @@
             allowfullscreen>
         </iframe>
     </div>
+    <script>
+        function adjustIframeSize() {
+            const iframe = document.querySelector('iframe');
+            const container = document.querySelector('.iframe-container');
+
+            // Adjust iframe height dynamically based on container
+            iframe.style.height = `${container.offsetWidth * 0.75}px`; // Maintain 4:3 aspect ratio
+        }
+
+        window.addEventListener('resize', adjustIframeSize);
+        window.addEventListener('load', adjustIframeSize);
+    </script>
 </body>
 </html>
+
