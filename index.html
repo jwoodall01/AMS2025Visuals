@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embedded Plotly Visualization</title>
     <style>
+        /* Remove default margins and padding */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Make the iframe responsive while preserving the aspect ratio */
         html, body {
             width: 100%;
             height: 100%;
@@ -18,10 +20,16 @@
             font-family: Arial, sans-serif;
         }
 
+        /* Dynamic font size based on viewport width */
+        body {
+            font-size: clamp(1rem, 3vw, 2rem); /* Font size changes dynamically */
+        }
+
         .iframe-container {
             position: relative;
             width: 100%;
-            height: 100vh; /* Full height of the viewport */
+            height: 0;
+            padding-bottom: 75%; /* Adjust for a 4:3 aspect ratio */
         }
 
         iframe {
@@ -31,7 +39,10 @@
             width: 100%;
             height: 100%;
             border: none;
+            transform: scale(0.2); /* Adjust zoom */
+            transform-origin: top left; /* Anchor the zoom */
         }
+
     </style>
 </head>
 <body>
@@ -41,12 +52,6 @@
             allowfullscreen>
         </iframe>
     </div>
-    <script>
-        const iframe = document.querySelector('iframe');
-        iframe.onload = () => {
-            const iframeDoc = iframe.contentWindow.document;
-            iframe.style.height = iframeDoc.body.scrollHeight + 'px';
-        };
-    </script>
 </body>
 </html>
+
