@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embedded Page</title>
     <style>
-        /* Ensure no margin or padding exists anywhere */
-        html, body {
+        /* Remove default margins and padding */
+        * {
             margin: 0;
             padding: 0;
-            height: 100%;
+            box-sizing: border-box;
+        }
+
+        html, body {
             width: 100%;
+            height: 100%;
+            overflow: hidden;
         }
 
         iframe {
@@ -25,3 +30,4 @@
     <iframe src="BoxPlot-StartTime-12-18-2022-0800EndTime-12-28-2022-0800.html" allowfullscreen></iframe>
 </body>
 </html>
+
