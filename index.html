@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embedded Page</title>
     <style>
-        body {
+        /* Ensure no margin or padding exists anywhere */
+        html, body {
             margin: 0;
             padding: 0;
-            height: 100vh;
-            width: 100vw;
-            background-color: #f4f4f9;
+            height: 100%;
+            width: 100%;
         }
 
         iframe {
-            width: 100vw;
-            height: 100vh;
-            border: none;
+            display: block; /* Prevent inline spacing issues */
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            border: none; /* Remove border around iframe */
         }
     </style>
 </head>
