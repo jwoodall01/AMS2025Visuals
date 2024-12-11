@@ -12,7 +12,7 @@
             box-sizing: border-box;
         }
 
-        /* Make the iframe responsive to the viewport */
+        /* Make the iframe responsive while preserving the aspect ratio */
         html, body {
             width: 100%;
             height: 100%;
@@ -24,10 +24,19 @@
         body {
             font-size: clamp(1rem, 3vw, 2rem); /* Font size changes dynamically */
         }
+.iframe-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 75%; /* Adjust for a 4:3 aspect ratio */
+        }
 
         iframe {
-            width: 100vw; /* Full width of the viewport */
-            height: 100vh; /* Full height of the viewport */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             border: none;
         }
 
@@ -39,10 +48,11 @@
     </style>
 </head>
 <body>
-    <iframe 
-        src="BoxPlot-StartTime-12-18-2022-0800EndTime-12-28-2022-0800.html" 
-        allowfullscreen>
-    </iframe>
+    <div class="iframe-container">
+        <iframe 
+            src="BoxPlot-StartTime-12-18-2022-0800EndTime-12-28-2022-0800.html" 
+            allowfullscreen>
+        </iframe>
+    </div>
 </body>
 </html>
-
