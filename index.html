@@ -47,16 +47,6 @@
             text-align: center;
             margin-top: 20px;
         }
-
-        /* Script for dynamic scaling */
-        <script>
-            window.addEventListener('resize', function() {
-                const iframe = document.querySelector('iframe');
-                const container = document.querySelector('.iframe-container');
-                const scale = Math.min(container.offsetWidth / iframe.offsetWidth, container.offsetHeight / iframe.offsetHeight);
-                iframe.style.transform = `scale(${scale})`;
-            });
-        </script>
     </style>
 </head>
 <body>
@@ -66,6 +56,19 @@
             allowfullscreen>
         </iframe>
     </div>
+    <script>
+        function scaleIframe() {
+            const iframe = document.querySelector('iframe');
+            const container = document.querySelector('.iframe-container');
+            const scaleWidth = container.offsetWidth / iframe.offsetWidth;
+            const scaleHeight = container.offsetHeight / iframe.offsetHeight;
+            const scale = Math.min(scaleWidth, scaleHeight);
+            iframe.style.transform = `scale(${scale})`;
+            iframe.style.height = `${container.offsetHeight / scale}px`;
+        }
+
+        window.addEventListener('resize', scaleIframe);
+        window.addEventListener('load', scaleIframe);
+    </script>
 </body>
 </html>
-
