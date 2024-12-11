@@ -24,6 +24,15 @@
         #plot-container {
             width: 100%;
             height: 100vh; /* Use the full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .plot-content {
+            transform: scale(0.9); /* Adjust scaling to zoom out */
+            transform-origin: top left;
         }
 
         h1 {
@@ -37,8 +46,7 @@
 <body>
     <div id="plot-container"></div>
     <script>
-        // Fetch and embed the Plotly HTML from GitHub Pages
-        const plotlyURL = "https://jwoodall01/AMS2025Visuals.github.io/BoxPlot-StartTime-12-18-2022-0800EndTime-12-28-2022-0800.html";
+        const plotlyURL = "https://your-github-username.github.io/BoxPlot-StartTime-12-18-2022-0800EndTime-12-28-2022-0800.html";
 
         fetch(plotlyURL)
             .then(response => response.text())
@@ -46,10 +54,15 @@
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(html, 'text/html');
                 const plotlyContent = doc.body.innerHTML;
-                document.getElementById('plot-container').innerHTML = plotlyContent;
+
+                // Create a wrapper div for scaling
+                const wrapper = document.createElement('div');
+                wrapper.classList.add('plot-content');
+                wrapper.innerHTML = plotlyContent;
+
+                document.getElementById('plot-container').appendChild(wrapper);
             })
             .catch(error => console.error('Error loading Plotly HTML:', error));
     </script>
 </body>
 </html>
-
