@@ -4,15 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embedded Plotly Visualization</title>
+    <style>
+        /* Ensure the iframe fills the window */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
-    <h1>My Embedded Plotly Visualization</h1>
     <iframe 
-        src="BoxPlot-StartTime-12-18-2022-0800EndTime-12-28-2022-0800.html" 
-        width="100%" 
-        height="600px" 
-        frameborder="0" 
+        src="BoxPlot-StartTime-12-18-2022-0800-EndTime-12-28-2022-0800.html" 
         allowfullscreen>
     </iframe>
 </body>
 </html>
+
