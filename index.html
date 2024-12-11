@@ -12,7 +12,6 @@
             box-sizing: border-box;
         }
 
-        /* Make the iframe responsive while preserving the aspect ratio */
         html, body {
             width: 100%;
             height: 100%;
@@ -22,50 +21,45 @@
 
         /* Dynamic font size based on viewport width */
         body {
-            font-size: clamp(1rem, 3vw, 2rem); /* Font size changes dynamically */
+            font-size: clamp(1rem, 3vw, 2rem);
         }
 
         .iframe-container {
             position: relative;
             width: 100%;
-            height: 0;
-            padding-bottom: 75%; /* Adjust for a 4:3 aspect ratio */
+            height: 100%;
+            overflow: hidden;
         }
 
         iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+            display: block; /* Ensure no extra white space is added */
             width: 100%;
-            height: 100%;
+            height: 100%; /* Adjust height to always fit content */
             border: none;
-        }
-
-        h1 {
-            font-size: clamp(1.5rem, 4vw, 3rem); /* Title font size dynamically adjusts */
-            text-align: center;
-            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <div class="iframe-container">
         <iframe 
+            id="plotlyIframe"
             src="BoxPlot-StartTime-12-18-2022-0800EndTime-12-28-2022-0800.html" 
             allowfullscreen>
         </iframe>
     </div>
     <script>
-        function adjustIframeSize() {
-            const iframe = document.querySelector('iframe');
-            const container = document.querySelector('.iframe-container');
+        // Automatically resize the iframe based on its content
+        window.addEventListener('load', function() {
+            const iframe = document.getElementById('plotlyIframe');
+            
+            // Function to ensure iframe matches content size
+            function resizeIframe() {
+                iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+                iframe.style.width = iframe.contentWindow.document.body.scrollWidth + 'px';
+            }
 
-            // Adjust iframe height dynamically based on container
-            iframe.style.height = `${container.offsetWidth * 0.75}px`; // Maintain 4:3 aspect ratio
-        }
-
-        window.addEventListener('resize', adjustIframeSize);
-        window.addEventListener('load', adjustIframeSize);
+            iframe.addEventListener('load', resizeIframe);
+        });
     </script>
 </body>
 </html>
