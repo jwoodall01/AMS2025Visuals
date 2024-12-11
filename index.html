@@ -11,23 +11,39 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         /* Make the iframe responsive to the viewport */
         html, body {
             width: 100%;
             height: 100%;
             overflow: hidden;
+            font-family: Arial, sans-serif;
         }
+
+        /* Dynamic font size based on viewport width */
+        body {
+            font-size: clamp(1rem, 3vw, 2rem); /* Font size changes dynamically */
+        }
+
         iframe {
             width: 100vw; /* Full width of the viewport */
             height: 100vh; /* Full height of the viewport */
             border: none;
         }
+
+        h1 {
+            font-size: clamp(1.5rem, 4vw, 3rem); /* Title font size dynamically adjusts */
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
+    <h1>My Interactive Plotly Visualization</h1>
     <iframe 
         src="BoxPlot-StartTime-12-18-2022-0800EndTime-12-28-2022-0800.html" 
         allowfullscreen>
     </iframe>
 </body>
 </html>
+
