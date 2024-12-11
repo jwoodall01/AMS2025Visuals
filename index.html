@@ -6,38 +6,21 @@
     <title>Embedded Page</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
+            width: 100vw;
             background-color: #f4f4f9;
         }
 
-        .iframe-container {
-            position: relative;
-            width: 90%; /* Responsive width */
-            max-width: 1200px; /* Max width for large screens */
-            height: 80%; /* Responsive height */
-            border: 1px solid #ccc;
-            background-color: #fff;
-        }
-
         iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             border: none;
         }
     </style>
 </head>
 <body>
-    <div class="iframe-container">
-        <iframe src="BoxPlot-StartTime-12-18-2022-0800EndTime-12-28-2022-0800.html" allowfullscreen></iframe> <!-- Embed another HTML file -->
-    </div>
+    <iframe src="BoxPlot-StartTime-12-18-2022-0800EndTime-12-28-2022-0800.html" allowfullscreen></iframe>
 </body>
 </html>
