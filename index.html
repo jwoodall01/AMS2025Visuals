@@ -12,57 +12,49 @@
             box-sizing: border-box;
         }
 
-        /* Make the plot responsive while preserving the aspect ratio */
+        /* Make the iframe responsive while preserving the aspect ratio */
         html, body {
             width: 100%;
             height: 100%;
-            margin: 0;
             overflow: hidden;
             font-family: Arial, sans-serif;
         }
 
-        #plot-container {
-            width: 100%;
-            height: 100vh; /* Use the full viewport height */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+        /* Dynamic font size based on viewport width */
+        body {
+            font-size: clamp(1rem, 3vw, 2rem); /* Font size changes dynamically */
         }
 
-        .plot-content {
-            transform: scale(0.9); /* Adjust scaling to zoom out */
-            transform-origin: top left;
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 75%; /* Adjust for a 4:3 aspect ratio */
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         h1 {
-            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-size: clamp(1.5rem, 4vw, 3rem); /* Title font size dynamically adjusts */
             text-align: center;
             margin-top: 20px;
         }
     </style>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <div id="plot-container"></div>
-    <script>
-        const plotlyURL = "https://jwoodall01/AMS2025Visuals.github.io/BoxPlot-StartTime-12-18-2022-0800EndTime-12-28-2022-0800.html";
-
-        fetch(plotlyURL)
-            .then(response => response.text())
-            .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const plotlyContent = doc.body.innerHTML;
-
-                // Create a wrapper div for scaling
-                const wrapper = document.createElement('div');
-                wrapper.classList.add('plot-content');
-                wrapper.innerHTML = plotlyContent;
-
-                document.getElementById('plot-container').appendChild(wrapper);
-            })
-            .catch(error => console.error('Error loading Plotly HTML:', error));
-    </script>
+    <div class="iframe-container">
+        <iframe 
+            src="BoxPlot-StartTime-12-18-2022-0800EndTime-12-28-2022-0800.html" 
+            allowfullscreen>
+        </iframe>
+    </div>
 </body>
 </html>
+
